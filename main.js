@@ -199,27 +199,10 @@ function binarySearch(prefix) {
     return results.slice(0, 5).map(match => { return match[0] });
 }
 
-function linearSearch(prefix) {
-    let index = 0;
-    for (; index < dictionary.length; index++) {
-        if (dictionary[index][0].toLowerCase().startsWith(prefix))
-            break;
-    }
-    if (index == dictionary.length) return [];
-    let results = [];
-    while (index < dictionary.length && dictionary[index][0].toLowerCase().startsWith(prefix))
-        results.push(dictionary[index++]);
-    quickSort(results);
-
-
-    return results.slice(0, 5).map(match => { return match[0] });
-}
-
 // Predict words based on the current input
 function predictWords(prefix) {
     if (!prefix) return [];
     return binarySearch(prefix.toLowerCase());
-    // return linearSearch(prefix.toLowerCase());
 }
 
 // Handle user input and update predictions
